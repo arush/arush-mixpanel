@@ -1,0 +1,96 @@
+<?xml version="1.0"?> 
+<config>
+  <modules>
+      <Arush_Mixpanel> 
+          <version>0.1.0</version>
+          <depends>
+              <!-- no dependencies --> 
+          </depends>
+      </Arush_Mixpanel> 
+  </modules>
+  <global> 
+   
+    <blocks>
+        <adminhtml>
+            <rewrite>
+            </rewrite>
+        </adminhtml>
+    </blocks>
+    
+    <blocks>
+        <mixpanel> 
+            <class>Arush_Mixpanel_Block</class>
+        </mixpanel> 
+    </blocks>
+    <helpers>
+        <mixpanel>
+          <class>Arush_Mixpanel_Helper</class>
+        </mixpanel>
+    </helpers>
+  </global>
+  <adminhtml>
+      <acl>
+          <resources>
+              <admin>
+                  <children>
+                      <system>
+                          <children>
+                              <config>
+                                  <children>
+                                      <mixpanel>
+                                          <title>Mixpanel Settings</title>
+                                      </mixpanel>
+                                  </children>
+                              </config>
+                          </children>
+                      </system>
+                  </children>
+              </admin>
+          </resources>
+      </acl>
+      <events></events> 
+      <translate></translate>
+  </adminhtml> 
+  <frontend>
+      <routers></routers> 
+      <events></events> 
+      <translate></translate> 
+      <layout>
+      	<updates>
+                <mixpanel>
+                    <file>arush/mixpanel.xml</file>
+                </mixpanel>
+        </updates>
+      </layout>
+  </frontend>
+  <admin>
+       <routers>
+          <mixpanel>
+              <use>admin</use>
+              <args>
+                  <module>Arush_Mixpanel</module>
+                  <frontName>mixpanel</frontName>
+              </args>
+          </mixpanel>
+      </routers>
+  </admin>
+  <!-- module defaults --> 
+  <default>
+      <!-- config values -->
+      <mixpanel>
+          <track>
+            <mixpanel_on><![CDATA[]]></mixpanel_on>
+            <mixpanel_code><![CDATA[]]></mixpanel_code>
+            <mixpanel_name><![CDATA[]]></mixpanel_name>
+          </track>
+      </mixpanel>
+  </default>
+  <!--<crontab>
+      <jobs>
+          <get_mixpanel_view>
+              <schedule><cron_expr>*/2 * * * *</cron_expr></schedule>
+              <run><model>mixpanel/observer::cacheFeeds</model></run>
+          </get_mixpanel_view>
+      </jobs>
+  </crontab>-->
+</config>

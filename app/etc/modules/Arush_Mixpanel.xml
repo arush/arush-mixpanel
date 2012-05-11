@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Arush_Mixpanel>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Arush_Mixpanel>
+	</modules>
+</config>

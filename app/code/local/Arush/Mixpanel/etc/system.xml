@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+	<arush translate="label" module="mixpanel">
+	    <label>Arush</label>
+	    <sort_order>150</sort_order>
+	</arush>
+    </tabs>
+    <sections>
+        <mixpanel translate="label comment" module="mixpanel">
+            <tab>arush</tab>
+            <label>Mixpanel</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>30</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                
+                <track translate="label comment" module="mixpanel">
+                    <label>Mixpanel Code</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <mixpanel_on translate="label">
+                            <label>Mixpanel On</label>
+                            <frontend_type>select</frontend_type>
+            			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mixpanel_on>
+            			<mixpanel_code translate="label">
+                            <label>Mixpanel Javascript Library</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Paste it from mixpanel.com setup]]></comment>
+                        </mixpanel_code>
+            			<mixpanel_name translate="label">
+                            <label>Add user's name, email and Magento ID to Mixpanel?</label>
+                            <frontend_type>select</frontend_type>
+            			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This will identify visitors by name, email and Magento ID in Mixpanel. ]]></comment>
+                        </mixpanel_name>
+                        
+                        
+                    </fields>
+                </track>
+            </groups>
+        </mixpanel>
+    </sections>
+</config>
