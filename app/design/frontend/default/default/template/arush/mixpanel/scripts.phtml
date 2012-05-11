@@ -1,92 +1,10 @@
 <?php  if(Mage::getStoreConfig('mixpanel/track/mixpanel_on')) {
-	$payer = 'not paying'; // default for non paying customers
+	// check if the module is on
 ?>
-	<!-- start Mixpanel BRANDiD code -->
+	<!-- start your Mixpanel custom code -->
 	<script type="text/javascript">
 		
-		<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-			$customer = Mage::getSingleton('customer/session')->getCustomer();
-			$customerID = $customer->getId();
-			$customerTag = $customer->getEmail();
 
-			// we use group id to tell if a customer has paid us before or not
-			$groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-			if($groupId != 1) {
-				$payer = 'paying customer';
-			}
-		 ?>
-			mixpanel.identify("<?php echo $customerID; ?>");
-			mixpanel.name_tag('<?php echo $customerTag; ?>');
-		<?php } ?>
-
-		// generic tracks
-		<?php 
-			if(!isset($_SESSION['referer'])) { //has it been set before?
-				//get the referrer
-				if (isset($_SERVER['HTTP_REFERER'])) {
-					$referer = $_SERVER['HTTP_REFERER'];
-				} else {
-					$referer = "unknown";
-				}
-				//save it in a session
-				$_SESSION['referer'] = $referer; // store session data
-
-			}
-			else {
-				$referer = $_SESSION['referer']; // store session data
-			}
-
-		?>
-		// track first touch / original referrer
-		mixpanel.register_once({
-			'first touch landing page': window.location.href
-			,'first touch referrer': '<?php echo $referer; ?>'
-	 	});
-	 	// track current referrer
-	 	mixpanel.register({
-			'current referrer': '<?php echo $referer; ?>'
-			,'paying customer': '<?php echo $payer ?>'
-	 	});
-
-		// custom actions
-		document.observe('dom:loaded', function(){
-			if(jQuery('#header-convert')) {
-				jQuery("#header-convert").click(function() {
-				    mixpanel.track("Landing Page - View Plans Header clicked");
-				});
-			}
-			
-			if(jQuery('#header-convert')) {
-				jQuery("#big-body-convert").click(function() {
-				    mixpanel.track("Landing Page - Big View Plans clicked");
-				});
-			}
-			
-			if(jQuery('#gift-button')) {
-				jQuery("#gift-button").click(function() {
-				    mixpanel.track("Landing Page - Gift button clicked");
-				});
-			}
-			
-			if(jQuery('#gift-landing-page-convert')) {
-				jQuery("#gift-landing-page-convert").click(function() {
-				    mixpanel.track("Gift Landing Page - Convert button clicked");
-				});
-			}
-
-			if(jQuery('#form-validate.register-email')) {
-				mixpanel.track_forms("#form-validate.register-email", "Registered with email address");
-
-			}
-			
-			if(jQuery('#form-validate.register-social-connect')) {
-				mixpanel.track_forms("#form-validate.register-social-connect", "Registered with social connect");
-			}
-
-		});
-
-
-			
 	</script>
 	<!-- end Mixpanel BRANDiD code -->
 
